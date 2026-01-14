@@ -4,12 +4,12 @@
    contain the root `toctree` directive.
 
 Welcome to LLM Benchmark Tool documentation!
-========================================
+==================================================
 
 .. toctree::
    :maxdepth: 5
    :caption: Contents:
 
-   srsDocument.rst
-   architectureDesign.rst
-   hldDocument.rst
+   srsDocument
+   architectureDesign
+   hldDocument
