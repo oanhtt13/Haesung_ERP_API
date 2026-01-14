@@ -14,12 +14,21 @@ This document outlines the Software Requirements Specification (SRS) for the LLM
 1.1 Purpose
 ~~~~~~~~~~~~~~~
 
-The purpose of this document is to define the requirements for the LLM Benchmark Tool, which is designed to evaluate and compare the performance of various large language models (LLMs).
+Phát triển ứng dụng chatbot cho phép "Saler" truy xuất sản phẩm trong hệ thống, tạo báo giá và lên đơn hàng.
 
 1.2 Scope
 ~~~~~~~~~~~~~~~~~~~
 
-The LLM Benchmark Tool will be used to assess different LLMs based on criteria such as accuracy, speed, and efficiency.
+**In-scope:**
+Phát triển hệ thống core, cho phép nhận yêu cầu từ người dùng thông qua API, trả về thông tin cũng qua API này.
+* Tìm kiếm sản phẩm
+* Tạo Báo giá
+* Hỗ trợ mua hàng: tạo đơn hàng
+* Tạo Phiếu chứng nhận chất lượng
+
+**Out of scope:**
+
+Không phát triển giao diện chatbot.
 
 2. Overall Description
 ---------------------------------
@@ -27,14 +36,26 @@ The LLM Benchmark Tool will be used to assess different LLMs based on criteria s
 2.1 Product Perspective
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The LLM Benchmark Tool is a standalone application that interfaces with various LLM APIs.
+- Ứng dụng nhận thông tin yêu cầu từ người dùng cuối thông qua API.
 
-2.2 Product Functions
+- Truy xuất thông tin tại hệ thống ERP, NAS, Email.
+
+- Trả về cho người thông tin cần thiết
+
+2.2 High-level user functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--   Evaluate LLMs based on predefined metrics.
--   Generate reports summarizing benchmark results.
--   Provide CLI for configuring benchmarks.
+- Người dùng tiến hành nhập yêu cầu : Tìm kiếm sản phẩm/Tạo báo giá/Tạo đơn hàng/Tạo Phiếu chứng nhận chất lượng. Gửi thông tin yêu cầu qua API.
+
+- Truy xuất thông tin tại hệ thống ERP, NAS, Email.
+
+- Trả về thông tin cho chatbot thông qua API.
+
+2.3 Constraints
+
+- Hệ thống mail sử dụng: :red:`Naverwork`
+- Build docker.
+- 
 
 3. Specific Requirements
 ----------------------------------------
@@ -42,11 +63,36 @@ The LLM Benchmark Tool is a standalone application that interfaces with various 
 3.1 Functional Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.1.1 User Interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. list-table:: **Find Product**
+   :widths: 15 10
+   :header-rows: 1
 
--   The tool shall provide a graphical user interface (GUI).
--   The GUI shall allow users to select an LLM and configure benchmark parameters.
+   * - Content
+     - Detail
+   * - Description
+     - Cho phép en-user tìm kiếm sản phẩm bằng từ khóa.
+   * - Input
+     - Câu lệnh tìm kiếm sản phẩm của end-user
+   * - Output
+     - Danh sách các sản phẩm tương ứng
+   * - Trigger
+     - End-user mở cửa sổ chatbot tại trang web
+
+       Điền câu lệnh tìm kiếm sản phẩm
+   * - Preconditions
+     - Thông tin sản phẩm cập nhật trước đó trên hệ thống (nếu không sẽ không tìm thấy sản phẩm)
+   * - Postconditions
+     - Trả về tất cả các sản phẩm có thông tin khớp từ khóa
+
+.. list-table:: **Business Logic**
+   :widths: 15 30 30
+   :header-rows: 1
+
+   * - Step
+     - Desciption
+     - Business Logic Acceptance Criteria
+   * - 1. Nhận lệnh từ end-user
+     - Khách hàng nhập thông tin từ 
 
 3.1.2 Benchmarking Capabilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,17 +121,21 @@ The LLM Benchmark Tool is a standalone application that interfaces with various 
 4.1 User Interfaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The primary user interface is a graphical application built using Python's Tkinter library.
+Sử dụng giao diện chatbot do phía HBU phát triển
 
 4.2 Hardware Interfaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-No specific hardware interfaces are required beyond standard computing resources.
+None
 
 4.3 Software Interfaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The tool interacts with external APIs provided by various LLM providers.
+.. list-table:: API List
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - GET 
 
 5. System Features and Use Cases
 ---------------------------------
