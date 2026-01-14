@@ -6,11 +6,11 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'LLM Benchmark Tool'
+project = 'Haesang ERP API'
 copyright = 'workshop participant'
 author = 'Trương Thị Oanh'
 release = '0.1'
-# esp32c3 = 1
+esp32c3 = 1
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
