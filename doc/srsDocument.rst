@@ -6,7 +6,7 @@
 SRS Document
 ========================
 
-This document outlines the Software Requirements Specification (SRS) for the LLM Benchmark Tool.
+This document outlines the Software Requirements Specification (SRS) for the Haesung ERP API.
 
 1. Introduction
 -----------------------
@@ -14,15 +14,16 @@ This document outlines the Software Requirements Specification (SRS) for the LLM
 1.1 Purpose
 ~~~~~~~~~~~~~~~
 
-Phát triển ứng dụng chatbot cho phép "Saler" truy xuất sản phẩm trong hệ thống, tạo báo giá và lên đơn hàng.
-HBLab phát triển phần core AI giúp hỗ trợ Chatbot hiểu yêu cầu từ end-user, đồng thời đưa ra câu trả lời thích hợp cho yêu cầu đó.
+- Phát triển ứng dụng chatbot cho phép "Seller" truy xuất sản phẩm trong hệ thống, tạo báo giá và lên đơn hàng. (Khác với chatbot support Khách mua hàng đã làm tại phase 1).
+
+- HBLab phát triển phần core AI giúp hỗ trợ Chatbot hiểu yêu cầu từ end-user, đồng thời đưa ra câu trả lời thích hợp cho yêu cầu đó.
 
 1.2 Scope
 ~~~~~~~~~~~~~~~~~~~
 
 **In-scope:**
 
-Phát triển hệ thống core, cho phép nhận yêu cầu từ người dùng thông qua API, kết quả trả về cũng qua API này.
+Phát triển hệ thống core AI, cho phép nhận yêu cầu từ người dùng thông qua API Chatbot, kết quả trả về cũng qua API này.
 Chatbot hỗ trợ tiếng Anh và tiếng Hàn.
 
 Các tính năng chính:
@@ -32,11 +33,13 @@ Các tính năng chính:
 * Hỗ trợ mua hàng: tạo đơn hàng
 * Tạo Báo giá
 * Tạo Phiếu chứng nhận chất lượng
-* Kiểm tra Chi tiết xuất kho, Đơn giá, Báo giá đã gửi cho End-user.
+* Truy xuất thông tin trên hệ thống Email/Drive
 
 **Out of scope:**
 
 Không phát triển giao diện chatbot (FE).
+
+Không phát triển API.
 
 2. Overall Description
 ---------------------------------
@@ -48,7 +51,7 @@ Không phát triển giao diện chatbot (FE).
 
 - Truy xuất thông tin tại hệ thống ERP, NAS, Email.
 
-- Trả về cho người thông tin cần thiết
+- Trả về cho người thông tin cần thiết.
 
 2.2 High-level user functions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,7 +66,8 @@ Không phát triển giao diện chatbot (FE).
 
 2.3 Constraints
 
-- Hệ thống mail sử dụng: :red:`Naverwork`
+- Hệ thống mail/drive sử dụng: :red:`Naverwork`.
+
 - Build docker.
 
 3. Specific Requirements
@@ -75,14 +79,14 @@ Không phát triển giao diện chatbot (FE).
 FR-Chatbot
 ^^^^^^^^^^^^
 
-.. list-table:: **FR-Find Product-1**
+.. list-table:: **FR-Chatbot-1**
    :widths: 15 10
    :header-rows: 1
 
    * - Content
      - Detail
    * - Description
-     - Cho phép chatbot có thể hiểu được các ngôn ngữ Tiếng Anh/Tiếng Hàn tự nhiên để truy xuất thông tin
+     - Cho phép chatbot có thể hiểu được các ngôn ngữ Tiếng Anh/Tiếng Hàn tự nhiên để truy xuất thông tin. Các ngôn ngữ khác là Optional.
    * - Input
      - Câu lệnh dạng text, được gửi đến core chatbot thông qua API
    * - Outpput
@@ -97,8 +101,6 @@ FR-Chatbot
        Đảm bảo kết nối mạng
    * - Postconditionas
      - Trả lời câu hỏi của En-user đúng với mong muốn
-
-       Có yêu cầu lưu log không?
 
 .. list-table:: **Business Logic**
    :widths: 10 30 30
@@ -220,7 +222,7 @@ FR-Quotation
 FR-Quotation-1
 ************************
 
-.. list-table:: **FR-Quality_Certificate-1**
+.. list-table:: **FR-Quotation-1**
    :widths: 15 10
    :header-rows: 1
 
@@ -231,13 +233,13 @@ FR-Quotation-1
    * - Input
      - Yêu cầu của End-user nhập tại cửa sổ chatbot
    * - Output
-     - File báo giá cho sản phẩm theo form có sẵn
+     - File báo giá cho sản phẩm theo form có sẵn dựa trên thông tin đã cung cấp.
    * - Preconditions
      - Hệ thống đã được update thông tin đầy đủ
    * - Postconditions
      - Trả về url có chứa `` Báo giá ``
 
-.. list-table:: **Exception Logic**
+.. list-table:: **Business Flow**
    :widths: 15 30 30
    :header-rows: 1
 
@@ -259,7 +261,7 @@ FR-Quotation-1
      - Yêu cầu phải đầy đủ thông tin: ``Thông tin sản phẩm, số lượng``
    * - 4. Trả về thông tin
      - Trả về báo giá đã được tạo
-     - Nhận được link url chứa ``Báo giá``
+     - Nhận được link url chứa ``Phiếu chứng nhận chất lượng``
 
 FR-POC: Purchase Order Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -334,7 +336,7 @@ FR-POC-1: Purchase Order Creation
    * - Step
      - Desciption
      - Business Logic Acceptance Criteria
-   * - 1. Không có sản phẩn nào được chọn trước đó
+   * - 1. Không có sản phẩm nào được chọn trước đó
      - User chưa có lịch sử tìm kiếm sản phẩm được ghi nhận
      - Chatbot nhắc người dùng cần cung cấp thông tin trước
    * - 2. Không cung cấp đầy đủ các thông tin cần thiết
@@ -342,12 +344,12 @@ FR-POC-1: Purchase Order Creation
      - Thông báo cho User, yêu cầu cung cấp thông tin
    * - 3. Sản phẩm không còn hàng
      - Sản phẩm không còn hàng hoặc không đủ số lượng yêu cầu
-     - Thông báo cho khách hàng. (Có yêu cầu gợi ý sản phẩm khác, tương tự, .... không?)
+     - Thông báo cho User, vẫn tạo order
 
-FR-Email
+FR-RAG
 ^^^^^^^^^^^^
 
-FR-Email-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
+FR-RAG-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
 ***************************************************************************
 
 .. list-table:: **FR-Email-1**
@@ -371,7 +373,7 @@ FR-Email-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
 
        Chatbot được cấp token/permission để đọc email và file Drive.
    * - Postconditions
-     - Dữ liệu được lưu trữ
+     - Dữ liệu được lưu trữ, luôn luôn update dữ liệu mới nhất từ hệ thống Email/Drive
 
        Log truy vấn
 
@@ -392,9 +394,7 @@ FR-Email-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
      - Lưu toàn bộ nội dung email
      - Có thể dễ dang truy cập, trích xuất nội dung email khi cần thiết
 
-       Thời gian phản hồi ........????
-
-       Các dạng file sẽ xuất hiện trong email là gì?
+       Các định dạng file cần xử lý: ``.doc``, ``.csv``, ``.xlsx``, ``.pdf``, ``.hwp``, ``.pptx``
 
 .. list-table:: **Exception Flow**
    :widths: 15 30 30
@@ -407,7 +407,7 @@ FR-Email-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
      - API Naverwork trả vễ lỗi trong khi call
      - Trả về thông tin lỗi, các lần chạy sau vẫn hoạt động bình thường
 
-FR-Email-2: Truy xuất "Chi tiết xuất kho" từ email
+FR-RAG-2: Truy xuất "Chi tiết xuất kho" từ email
 ***********************************************************
 .. list-table:: **FR-Email-2**
    :widths: 15 10
@@ -452,7 +452,7 @@ FR-Email-2: Truy xuất "Chi tiết xuất kho" từ email
      - Trả kết quả tìm kiếm được thông qua API
      - Thông tin trả về yêu cầu như thế nào?
 
-FR-Email-3: Truy xuất ``Đơn giá``
+FR-RAG-3: Truy xuất ``Đơn giá``
 ****************************************
 
 .. list-table:: **FR-Email-2**
@@ -497,7 +497,7 @@ FR-Email-3: Truy xuất ``Đơn giá``
      - Trả kết quả tìm kiếm được thông qua API
      - Thông tin trả về yêu cầu như thế nào?
 
-FR-Email-4: Truy xuất :red:`Báo giá`
+FR-RAG-4: Truy xuất :red:`Báo giá`
 ****************************************
 
 .. list-table:: **FR-Email-2**
