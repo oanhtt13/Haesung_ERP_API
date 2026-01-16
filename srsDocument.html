@@ -1,0 +1,1051 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRS Document &mdash; Haesang ERP API 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/lang.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Architecture Design" href="architectureDesign.html" />
+    <link rel="prev" title="Welcome to Haesang ERP API documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Haesang ERP API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SRS Document</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#purpose">1.1 Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scope">1.2 Scope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overall-description">2. Overall Description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#product-perspective">2.1 Product Perspective</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-level-user-functions">2.2 High-level user functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specific-requirements">3. Specific Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functional-requirements">3.1 Functional Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fr-chatbot">FR-Chatbot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr-fr-find-product">FR-FR: Find Product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr-quotation">FR-Quotation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr-poc-purchase-order-creation">FR-POC: Purchase Order Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr-rag">FR-RAG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr-quality-certificate">FR-Quality_Certificate</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#non-functional-requirements">3.2 Non-functional Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#performance-requirements">3.2.1 Performance Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usability-requirements">3.2.2 Usability Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#external-interface-requirements">4. External Interface Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-interfaces">4.1 User Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-interfaces">4.2 Hardware Interfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#software-interfaces">4.3 Software Interfaces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#system-features-and-use-cases">5. System Features and Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#feature-configure-benchmark-parameters">5.1 Feature: Configure Benchmark Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feature-execute-benchmarks">5.2 Feature: Execute Benchmarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feature-view-results-and-reports">5.3 Feature: View Results and Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architectureDesign.html">Architecture Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hldDocument.html">High Level Design Document</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Haesang ERP API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SRS Document</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/srsDocument.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="srs-document">
+<span id="srsdocument"></span><h1>SRS Document<a class="headerlink" href="#srs-document" title="Link to this heading"></a></h1>
+<p>This document outlines the Software Requirements Specification (SRS) for the Haesung ERP API.</p>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<section id="purpose">
+<h3>1.1 Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Phát triển ứng dụng chatbot cho phép “Seller” truy xuất sản phẩm trong hệ thống, tạo báo giá và lên đơn hàng. (Khác với chatbot support Khách mua hàng đã làm tại phase 1).</p></li>
+<li><p>HBLab phát triển phần core AI giúp hỗ trợ Chatbot hiểu yêu cầu từ end-user, đồng thời đưa ra câu trả lời thích hợp cho yêu cầu đó.</p></li>
+</ul>
+</section>
+<section id="scope">
+<h3>1.2 Scope<a class="headerlink" href="#scope" title="Link to this heading"></a></h3>
+<p><strong>In-scope:</strong></p>
+<p>Phát triển hệ thống core AI, cho phép nhận yêu cầu từ người dùng thông qua API Chatbot, kết quả trả về cũng qua API này.
+Chatbot hỗ trợ tiếng Anh và tiếng Hàn.</p>
+<p>Các tính năng chính:</p>
+<ul class="simple">
+<li><p>Tiếp nhận, đọc hiểu yêu cầu End-user</p></li>
+<li><p>Tìm kiếm sản phẩm</p></li>
+<li><p>Hỗ trợ mua hàng: tạo đơn hàng</p></li>
+<li><p>Tạo Báo giá</p></li>
+<li><p>Tạo Phiếu chứng nhận chất lượng</p></li>
+<li><p>Truy xuất thông tin trên hệ thống Email/Drive</p></li>
+</ul>
+<p><strong>Out of scope:</strong></p>
+<p>Không phát triển giao diện chatbot (FE).</p>
+<p>Không phát triển API.</p>
+</section>
+</section>
+<section id="overall-description">
+<h2>2. Overall Description<a class="headerlink" href="#overall-description" title="Link to this heading"></a></h2>
+<section id="product-perspective">
+<h3>2.1 Product Perspective<a class="headerlink" href="#product-perspective" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Ứng dụng nhận thông tin yêu cầu từ người dùng cuối thông qua API.</p></li>
+<li><p>Truy xuất thông tin tại hệ thống ERP, NAS, Email.</p></li>
+<li><p>Trả về cho người thông tin cần thiết.</p></li>
+</ul>
+</section>
+<section id="high-level-user-functions">
+<h3>2.2 High-level user functions<a class="headerlink" href="#high-level-user-functions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Người dùng tiến hành nhập yêu cầu : Tìm kiếm sản phẩm/Tạo báo giá/Tạo đơn hàng/Tạo Phiếu chứng nhận chất lượng. Gửi thông tin yêu cầu qua API.</p></li>
+<li><p>Truy xuất thông tin tại hệ thống ERP, NAS, Email.</p></li>
+<li><p>Trả về thông tin cho chatbot thông qua API.</p></li>
+<li><p>Ứng dụng hỗ trợ tiếng Anh/ Tiếng Hàn.</p></li>
+</ul>
+<p>2.3 Constraints</p>
+<ul class="simple">
+<li><p>Hệ thống mail/drive sử dụng: <span class="red">Naverwork</span>.</p></li>
+<li><p>Build docker.</p></li>
+</ul>
+</section>
+</section>
+<section id="specific-requirements">
+<h2>3. Specific Requirements<a class="headerlink" href="#specific-requirements" title="Link to this heading"></a></h2>
+<section id="functional-requirements">
+<h3>3.1 Functional Requirements<a class="headerlink" href="#functional-requirements" title="Link to this heading"></a></h3>
+<section id="fr-chatbot">
+<h4>FR-Chatbot<a class="headerlink" href="#fr-chatbot" title="Link to this heading"></a></h4>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text"><strong>FR-Chatbot-1</strong></span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Cho phép chatbot có thể hiểu được các ngôn ngữ Tiếng Anh/Tiếng Hàn tự nhiên để truy xuất thông tin. Các ngôn ngữ khác là Optional.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>Câu lệnh dạng text, được gửi đến core AI thông qua API Chatbot.</p></td>
+</tr>
+<tr class="row-even"><td><p>Outpput</p></td>
+<td><p>Trả về câu trả lời tương ứng thông qua API Chatbot.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>End-user truy cập website khách hàng, chọn mục <code class="docutils literal notranslate"><span class="pre">Chatbot</span></code>.</p>
+<p>Nhập câu hỏi mong muốn và nhấn <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>Server wesite hoạt động bình thường</p>
+<p>Đảm bảo kết nối mạng ổn định.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Postconditionas</p></td>
+<td><p>Trả lời câu hỏi của En-user đúng với mong muốn</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text"><strong>Business Logic</strong></span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 42.9%" />
+<col style="width: 42.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Tiếp nhận yêu cầu của end-user</p></li>
+</ol>
+</td>
+<td><p>Tiếp nhận thông tin yêu cầu của end-user thông qua API đã có, thông tin được lưu vào body</p></td>
+<td><p>API đã có sẵn, chứa thông tin: …..</p>
+<p>Định dạng message: Chuỗi kí tự (String)</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Phân tích yêu cầu</p></li>
+</ol>
+</td>
+<td><p>Trích xuất yêu cầu của End-user, đọc hiểu yêu cầu End-user, trích xuất các thông tin cần thiết</p></td>
+<td><p>Từ thông tin nhận từ API, parser đúng trường nội dung yêu cầu End-user</p>
+<p>Hiểu được ít nhất 10 dạng câu hỏi phổ biến về từng yêu cầu của End-user</p>
+<p>Xử lý lỗi chính tả nhẹ.</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Thực thi yêu cầu End-user</p></li>
+</ol>
+</td>
+<td><p>Dựa trên yêu cầu End-user và các thông tin cần thiết, tiến hành call API hỗ trợ để lấy được thông tin cần thiết</p></td>
+<td><p>Call đúng API</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả về kết quả</p></li>
+</ol>
+</td>
+<td><p>Từ thông tin trả về từ các API hỗ trợ, tiến hành tạo respone cho API Chatbot.</p></td>
+<td><p>Trả về theo form theo yêu cầu (thông tin form)</p>
+<p>Ngôn ngữ trả về tương thích với ngôn ngữ end-user nhập vào.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text"><strong>Extent Logic</strong></span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 42.9%" />
+<col style="width: 42.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>End-user nhập nội dung không liên quan</p></li>
+</ol>
+</td>
+<td><p>End-user nhập nội dung không thể đọc hiểu, sai chính tả quá nhiều.</p></td>
+<td><p>Thông báo không hiểu, yêu cầu End-user nhập lại thông tin.</p>
+<p>Có cần đưa ra một vài gợi ý câu hỏi thích hợp không?</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>End-user nhập sai ngôn ngữ</p></li>
+</ol>
+</td>
+<td><p>End-user nhập nội dung câu hỏi ngôn ngữ không hỗ trợ</p></td>
+<td><p>Thông báo cho End-user không hỗ trợ ngôn ngữ này, chỉ hỗ trợ tiếng Anh/tiếng Hàn</p>
+<p>Yêu cầu nhập lại</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>End-user nhập yêu cầu thiếu/sai thông tin</p></li>
+</ol>
+</td>
+<td><p>End-user nhập yêu cầu thiếu các thông tin cung cấp tối thiểu để có thể thực hiện yêu cầu</p></td>
+<td><p>Thông báo cho End-user yêu cầu thiếu thông tin</p>
+<p>Gợi ý các thông tin end-user có thể bổ sung để lệnh có thể chạy được.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fr-fr-find-product">
+<h4>FR-FR: Find Product<a class="headerlink" href="#fr-fr-find-product" title="Link to this heading"></a></h4>
+<section id="fr-fp-1-find-product">
+<h5>FR-FP-1: Find Product<a class="headerlink" href="#fr-fp-1-find-product" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text"><strong>FR-Find Product-1</strong></span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Chatbot cho phép người dùng tìm sản phẩm bằng tiếng Anh/Hàn tự nhiên và trả về mọi thông tin liên quan.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>Câu lệnh: “Tìm sản phẩm có tên là A”, “Cho tôi thông tin sản phẩm có nguyên liệu là ABC”, ….</p>
+<p><code class="docutils literal notranslate"><span class="pre">Keywors</span></code> về sản phẩm: tên sản phẩm, mã sản phẩm, nguyên liệu, quy cách, đơn giá, mô tả, tồn kho (có thể mix)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>Danh sách các sản phẩm phù hợp với yêu cầu.</p>
+<p>Mỗi sản phẩm kèm tất cả thông tin có lấy được từ hệ thống ERP.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>End-user mở cửa sổ chatbot tại trang web</p>
+<p>Điền câu lệnh tìm kiếm sản phẩm</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>Thông tin sản phẩm cập nhật trước đó trên hệ thống (nếu không sẽ không tìm thấy sản phẩm)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Postconditions</p></td>
+<td><p>Trả về tất cả các sản phẩm có thông tin khớp từ khóa</p>
+<p>Chatbot ghi nhớ sản phẩm đã được chọn (để phục vụ các bước tiếp theo)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text"><strong>Business Logic</strong></span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 42.9%" />
+<col style="width: 42.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Nhận lệnh từ end-user</p></li>
+</ol>
+</td>
+<td><p>User gửi yêu cầu tìm sản phẩm</p></td>
+<td><p>Tiếp nhận yêu cầu thông qua API Chatbot</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Phân tích câu hỏi và trích xuất từ khóa</p></li>
+</ol>
+</td>
+<td><p>Sử dụng AI đọc hiểu yêu cầu của User</p></td>
+<td><p>Trích xuất từ khóa (Các từ khóa cần thiết để call API find-product)</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Truy vấn thông tin</p></li>
+</ol>
+</td>
+<td><p>Sử dụng các từ khóa đã trích xuất được, tiến hàng call API Find product để lấy thông tin</p></td>
+<td><p>Get thành công toàn bộ thông tin sản phẩm</p>
+<p>Có thể lấy nhiều thông tin sản phẩm một lúc</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text"><strong>Exception Logic</strong></span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Không tìm thấy tên sản phẩm trong hệ thống</p></li>
+</ol>
+</td>
+<td><p>End-user để trống tên sản phẩm khi tìm kiếm theo tên hoặc không tìm thấy thông tin trong hệ thống</p></td>
+<td><p>Phản hồi: không tìm thấy thông tin, yêu cầu nhập lại</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Mã sản phẩm không có thông tin trên hệ thống</p></li>
+</ol>
+</td>
+<td><p>Mã sản phẩm để trống / không tìm thấy</p></td>
+<td><p>Phản hồi: không tìm thấy thông tin, yêu cầu nhập lại</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="fr-quotation">
+<h4>FR-Quotation<a class="headerlink" href="#fr-quotation" title="Link to this heading"></a></h4>
+<section id="fr-quotation-1">
+<h5>FR-Quotation-1<a class="headerlink" href="#fr-quotation-1" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text"><strong>FR-Quotation-1</strong></span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Dựa theo thông tin trên hệ thống eCount, hỗ trợ tạo báo giá cho sản phẩm theo yêu cầu End-user</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>Yêu cầu của End-user nhập tại cửa sổ chatbot</p></td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>File báo giá cho sản phẩm theo form có sẵn dựa trên thông tin đã cung cấp.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Preconditions</p></td>
+<td><p>Hệ thống đã được update thông tin đầy đủ</p></td>
+</tr>
+<tr class="row-even"><td><p>Postconditions</p></td>
+<td><p>Trả về url có chứa `` Báo giá ``</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text"><strong>Business Flow</strong></span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Tiếp nhận yêu cầu từ end-user</p></li>
+</ol>
+</td>
+<td><p>Tiếp nhận yêu cầu từ phía End-user</p>
+<p>Mẫu yêu cầu của End-user như thế nào? En-user có thể cung cấp các thông tin gì để yêu cầu tạo Phiếu?</p>
+</td>
+<td><p>Đọc hiểu nội dung yêu cầu của End-user</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Xác nhận yêu cầu của End-user</p></li>
+</ol>
+</td>
+<td><p>Tổng hợp thông tin, yêu cầu End-user xác nhận yêu cầu</p></td>
+<td><p>Chỉ xác định End-user đồng ý tạo <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code> khi có những từ ngữ mang ý nghĩa chấp nhận.</p>
+<p>Nếu không, cần hỏi lại End-user để tiếp nhận yêu cầu</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Yêu cầu tạo báo giá</p></li>
+</ol>
+</td>
+<td><p>Gửi yêu cầu tạo báo giá</p></td>
+<td><p>Yêu cầu phải đầy đủ thông tin: <code class="docutils literal notranslate"><span class="pre">Thông</span> <span class="pre">tin</span> <span class="pre">sản</span> <span class="pre">phẩm,</span> <span class="pre">số</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả về thông tin</p></li>
+</ol>
+</td>
+<td><p>Trả về báo giá đã được tạo</p></td>
+<td><p>Nhận được link url chứa <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="fr-poc-purchase-order-creation">
+<h4>FR-POC: Purchase Order Creation<a class="headerlink" href="#fr-poc-purchase-order-creation" title="Link to this heading"></a></h4>
+<section id="fr-poc-1-purchase-order-creation">
+<h5>FR-POC-1: Purchase Order Creation<a class="headerlink" href="#fr-poc-1-purchase-order-creation" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-text"><strong>FR-POC-1</strong></span><a class="headerlink" href="#id13" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Cho phép User tạo yêu cầu tạo <code class="docutils literal notranslate"><span class="pre">Purchase</span> <span class="pre">Order</span></code> dựa trên các sản phẩm mà người dùng đã tìm kiếm hoặc đã chọn trong phiên hội thoại</p>
+<p>Chức năng này hỗ trợ quy trình mua hàng: chọn sản phẩm -&gt; Tạo PO -&gt; gửi PO cho tính năng mua hàng.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>Câu lệnh:</p>
+<ul class="simple">
+<li><p>Tạo đơn mua hàng cho sản phẩm này.</p></li>
+<li><p>Tôi muốn mua sản phẩm tên/mã A.</p></li>
+<li><p>Lập cho tôi PO cho 3 sản phẩm tôi đã xem.</p></li>
+</ul>
+<p>Thông tin cần thiết (chatbot sẽ hỏi lại User nếu thiếu): (Yêu cầu cung cấp)</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>File Purchase Oder trong url trả về.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>Khi khách hàng nhập yêu cầu tại UI chatbot</p></td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>Người dùng đã thực hiện tìm kiếm hoặc chỉ định ít nhất 1 sản phẩm trong phiên chat</p>
+<p>Chatbot có quyền truy cập dữ liệu sản phẩm và NCC thông qua API</p>
+<p>API hỗ trợ tạo PO trả về đúng thông tin yêu cầu</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Postconditions</p></td>
+<td><p>PO được tạo thành công, trả về cho AI core url dẫn đến trang mua hàng với thông tin đúng theo khách hàng yêu cầu</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id14">
+<caption><span class="caption-text"><strong>Exception Flow</strong></span><a class="headerlink" href="#id14" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Không có sản phẩm nào được chọn trước đó</p></li>
+</ol>
+</td>
+<td><p>User chưa có lịch sử tìm kiếm sản phẩm được ghi nhận</p></td>
+<td><p>Chatbot nhắc người dùng cần cung cấp thông tin trước</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Không cung cấp đầy đủ các thông tin cần thiết</p></li>
+</ol>
+</td>
+<td><p>User cung cấp thiếu thông tin</p></td>
+<td><p>Thông báo cho User, yêu cầu cung cấp thông tin</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Sản phẩm không còn hàng</p></li>
+</ol>
+</td>
+<td><p>Sản phẩm không còn hàng hoặc không đủ số lượng yêu cầu</p></td>
+<td><p>Thông báo cho User, vẫn tạo order</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="fr-rag">
+<h4>FR-RAG<a class="headerlink" href="#fr-rag" title="Link to this heading"></a></h4>
+<section id="fr-rag-1-chatbot-truy-cap-va-lay-thong-tin-tu-he-thong-naverwork">
+<h5>FR-RAG-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork<a class="headerlink" href="#fr-rag-1-chatbot-truy-cap-va-lay-thong-tin-tu-he-thong-naverwork" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-text"><strong>FR-RAG-1</strong></span><a class="headerlink" href="#id15" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Chatbot phải kết nối được với hệ thống Naverwork (Email / Drive) để đọc nội dung email và tài liệu liên quan.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>API cho phép truy cập vào hệ thống <strong>Naverwork</strong>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>Nội dung mail được lưu lại để sử dụng khi cần thiết.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>Thực hiện đọc dữ liệu liên tục vì nội dung email cần được update mới nhất.</p></td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>User có quyền truy cập email Naverwork.</p>
+<p>Hệ thống Naverwork API khả dụng.</p>
+<p>Chatbot được cấp token/permission để đọc email và file Drive.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Postconditions</p></td>
+<td><p>Dữ liệu được lưu trữ, luôn luôn update dữ liệu mới nhất từ hệ thống Email/Drive</p>
+<p>Log truy vấn</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id16">
+<caption><span class="caption-text"><strong>Business Logic</strong></span><a class="headerlink" href="#id16" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Kết nối với hệ thống <strong>Naverwork</strong></p></li>
+</ol>
+</td>
+<td><p>Sử dung API đăng nhập vào hệ thống Naverwork</p></td>
+<td><p>Đăng nhập thành công</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Hệ thống truy xuất email</p></li>
+</ol>
+</td>
+<td><p>Hệ thống truy xuất toàn bộ thông tin trong mail, phân tích nội dung email.</p></td>
+<td><p>Đọc được email hợp lệ khi API hoạt động đúng</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Lưu email</p></li>
+</ol>
+</td>
+<td><p>Lưu toàn bộ nội dung email</p></td>
+<td><p>Có thể dễ dang truy cập, trích xuất nội dung email khi cần thiết</p>
+<p>Các định dạng file cần xử lý: <code class="docutils literal notranslate"><span class="pre">.doc</span></code>, <code class="docutils literal notranslate"><span class="pre">.csv</span></code>, <code class="docutils literal notranslate"><span class="pre">.xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, <code class="docutils literal notranslate"><span class="pre">.hwp</span></code>, <code class="docutils literal notranslate"><span class="pre">.pptx</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id17">
+<caption><span class="caption-text"><strong>Exception Flow</strong></span><a class="headerlink" href="#id17" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Lỗi API Naverwork</p></li>
+</ol>
+</td>
+<td><p>API Naverwork trả vễ lỗi trong khi call</p></td>
+<td><p>Trả về thông tin lỗi, các lần chạy sau vẫn hoạt động bình thường</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fr-rag-2-truy-xuat-chi-tiet-xuat-kho-tu-email">
+<h5>FR-RAG-2: Truy xuất “Chi tiết xuất kho” từ email<a class="headerlink" href="#fr-rag-2-truy-xuat-chi-tiet-xuat-kho-tu-email" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-text"><strong>FR-RAG-2</strong></span><a class="headerlink" href="#id18" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Đọc email trên hệ thống <strong>Naverwork platform</strong> (email, drive) từ đó hỗ trợ end-user truy xuất thông tin <code class="docutils literal notranslate"><span class="pre">Chi</span> <span class="pre">tiết</span> <span class="pre">xuất</span> <span class="pre">kho</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>Email được lưu trữ trên hệ thống <strong>Naverwork platform</strong>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>Tùy vào yêu cầu End-user, trả về các thông tin sau: <code class="docutils literal notranslate"><span class="pre">Chi</span> <span class="pre">tiết</span> <span class="pre">xuất</span> <span class="pre">kho</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>End-user mở cửa sổ chatbot tại trang web</p>
+<p>Điền câu lệnh tìm kiếm sản phẩm</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>Thông tin xuất kho tồn tại trong email</p></td>
+</tr>
+<tr class="row-odd"><td><p>Postconditions</p></td>
+<td><p>Trả về thông tin End-user mong muốn thông qua API đã dựng sẵn. Từ đó sẽ hiển thị lên màn hình chatbot</p>
+<p>Nếu không tìm được thông tin theo yêu cầu trên hệ thống, thông báo end-user.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-text"><strong>Exception Logic</strong></span><a class="headerlink" href="#id19" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Nhập lệnh yêu cầu</p></li>
+</ol>
+</td>
+<td><p>End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Tìm kiếm thông tin</p></li>
+</ol>
+</td>
+<td><p>Dựa trên yêu cầu của End-user, tiến hành tìm kiếm email có chứa thông tin xuất kho</p></td>
+<td><p>Thời gian truy xuất thông tin?</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Truy xuất thông tin xuất kho</p></li>
+</ol>
+</td>
+<td><p>Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, …)</p></td>
+<td><p>Trích xuất thông tin thành công, giữ nguyên tình trạng file?</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả kết quả cho user</p></li>
+</ol>
+</td>
+<td><p>Trả kết quả tìm kiếm được thông qua API</p></td>
+<td><p>Thông tin trả về yêu cầu như thế nào?</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fr-rag-3-truy-xuat-don-gia">
+<h5>FR-RAG-3: Truy xuất <code class="docutils literal notranslate"><span class="pre">Đơn</span> <span class="pre">giá</span></code><a class="headerlink" href="#fr-rag-3-truy-xuat-don-gia" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id20">
+<caption><span class="caption-text"><strong>Exception Logic</strong></span><a class="headerlink" href="#id20" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Nhập lệnh yêu cầu</p></li>
+</ol>
+</td>
+<td><p>End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Tìm kiếm thông tin</p></li>
+</ol>
+</td>
+<td><p>Dựa trên yêu cầu của End-user, tiến hành tìm kiếm email có chứa thông tin <code class="docutils literal notranslate"><span class="pre">đơn</span> <span class="pre">giá</span></code></p></td>
+<td><p>Thời gian truy xuất thông tin?</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Truy xuất thông tin xuất kho</p></li>
+</ol>
+</td>
+<td><p>Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, …)</p></td>
+<td><p>Trích xuất thông tin thành công, giữ nguyên tình trạng file?</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả kết quả cho user</p></li>
+</ol>
+</td>
+<td><p>Trả kết quả tìm kiếm được thông qua API</p></td>
+<td><p>Thông tin trả về yêu cầu như thế nào?</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fr-rag-4-truy-xuat-bao-gia">
+<h5>FR-RAG-4: Truy xuất <span class="red">Báo giá</span><a class="headerlink" href="#fr-rag-4-truy-xuat-bao-gia" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id21">
+<caption><span class="caption-text"><strong>Exception Logic</strong></span><a class="headerlink" href="#id21" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Nhập lệnh yêu cầu</p></li>
+</ol>
+</td>
+<td><p>End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Tìm kiếm thông tin</p></li>
+</ol>
+</td>
+<td><p>Dựa trên yêu cầu của End-user, tiến hành tìm kiếm email có chứa thông tin <code class="docutils literal notranslate"><span class="pre">Báo</span> <span class="pre">giá</span></code></p></td>
+<td><p>Thời gian truy xuất thông tin?</p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Truy xuất thông tin xuất kho</p></li>
+</ol>
+</td>
+<td><p>Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, …)</p></td>
+<td><p>Trích xuất thông tin thành công, giữ nguyên tình trạng file?</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả kết quả cho user</p></li>
+</ol>
+</td>
+<td><p>Trả kết quả tìm kiếm được thông qua API</p></td>
+<td><p>Thông tin trả về yêu cầu như thế nào?</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="fr-quality-certificate">
+<h4>FR-Quality_Certificate<a class="headerlink" href="#fr-quality-certificate" title="Link to this heading"></a></h4>
+<section id="fr-quality-certificate-1-tao-phieu-chung-nhan-chat-luong">
+<h5>FR-Quality_Certificate-1: Tạo phiếu chứng nhận chất lượng<a class="headerlink" href="#fr-quality-certificate-1-tao-phieu-chung-nhan-chat-luong" title="Link to this heading"></a></h5>
+<table class="docutils align-default" id="id22">
+<caption><span class="caption-text"><strong>FR-Quality_Certificate-1</strong></span><a class="headerlink" href="#id22" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 60.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Content</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Description</p></td>
+<td><p>Hỗ trợ tạo Phiếu chứng nhận chất lượng sau khi hàng đã được xuất kho</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input</p></td>
+<td><p>End-user nhập message yêu cầu tạo <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Output</p></td>
+<td><p>Tạo thành công</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trigger</p></td>
+<td><p>End-user mở cửa sổ chatbot tại trang web</p>
+<p>Điền câu lệnh tìm kiếm sản phẩm</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>Preconditions</p></td>
+<td><p>Kết nối thành công đến hệ thống ERP</p>
+<p>Đảm bảo các thông tin cần thiết đã được update trên hệ thống ERP</p>
+<p>Đơn hàng đã xuất kho</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Postconditions</p></td>
+<td><p>Trả về các thông tin cần thiết cho <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id23">
+<caption><span class="caption-text"><strong>Exception Logic</strong></span><a class="headerlink" href="#id23" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Desciption</p></th>
+<th class="head"><p>Business Logic Acceptance Criteria</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Tiếp nhận yêu cầu từ end-user</p></li>
+</ol>
+</td>
+<td><p>Tiếp nhận yêu cầu từ phía End-user</p>
+<p>Mẫu yêu cầu của End-user như thế nào? En-user có thể cung cấp các thông tin gì để yêu cầu tạo Phiếu?</p>
+</td>
+<td><p>Đọc hiểu nội dung yêu cầu của End-user</p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Xác nhận yêu cầu của End-user</p></li>
+</ol>
+</td>
+<td><p>Tổng hợp thông tin, yêu cầu End-user xác nhận yêu cầu</p></td>
+<td><p>Chỉ xác định End-user đồng ý tạo <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code> khi có những từ ngữ mang ý nghĩa chấp nhận.</p>
+<p>Nếu không, cần hỏi lại End-user để tiếp nhận yêu cầu</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Yêu cầu tạo báo giá</p></li>
+</ol>
+</td>
+<td><p>Gửi yêu cầu tạo báo giá</p></td>
+<td><p>Yêu cầu phải đầy đủ thông tin: <code class="docutils literal notranslate"><span class="pre">Thông</span> <span class="pre">tin</span> <span class="pre">sản</span> <span class="pre">phẩm,</span> <span class="pre">số</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Trả về thông tin</p></li>
+</ol>
+</td>
+<td><p>Trả về báo giá đã được tạo</p></td>
+<td><p>Nhận được link url chứa <code class="docutils literal notranslate"><span class="pre">Phiếu</span> <span class="pre">chứng</span> <span class="pre">nhận</span> <span class="pre">chất</span> <span class="pre">lượng</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="non-functional-requirements">
+<h3>3.2 Non-functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Link to this heading"></a></h3>
+<section id="performance-requirements">
+<h4>3.2.1 Performance Requirements<a class="headerlink" href="#performance-requirements" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>The tool shall execute benchmarks within a reasonable time frame.</p></li>
+<li><p>The tool shall provide real-time feedback during benchmark execution.</p></li>
+</ul>
+</section>
+<section id="usability-requirements">
+<h4>3.2.2 Usability Requirements<a class="headerlink" href="#usability-requirements" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>The tool shall be easy to use for both technical and non-technical users.</p></li>
+<li><p>The tool shall provide clear instructions and documentation.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="external-interface-requirements">
+<h2>4. External Interface Requirements<a class="headerlink" href="#external-interface-requirements" title="Link to this heading"></a></h2>
+<section id="user-interfaces">
+<h3>4.1 User Interfaces<a class="headerlink" href="#user-interfaces" title="Link to this heading"></a></h3>
+<p>Sử dụng giao diện chatbot do phía HBU phát triển</p>
+</section>
+<section id="hardware-interfaces">
+<h3>4.2 Hardware Interfaces<a class="headerlink" href="#hardware-interfaces" title="Link to this heading"></a></h3>
+<p>None</p>
+</section>
+<section id="software-interfaces">
+<h3>4.3 Software Interfaces<a class="headerlink" href="#software-interfaces" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="system-features-and-use-cases">
+<h2>5. System Features and Use Cases<a class="headerlink" href="#system-features-and-use-cases" title="Link to this heading"></a></h2>
+<section id="feature-configure-benchmark-parameters">
+<h3>5.1 Feature: Configure Benchmark Parameters<a class="headerlink" href="#feature-configure-benchmark-parameters" title="Link to this heading"></a></h3>
+<p>Users can configure parameters such as input text length, number of iterations, and model selection.</p>
+</section>
+<section id="feature-execute-benchmarks">
+<h3>5.2 Feature: Execute Benchmarks<a class="headerlink" href="#feature-execute-benchmarks" title="Link to this heading"></a></h3>
+<p>Users can initiate benchmark runs with their configured settings.</p>
+</section>
+<section id="feature-view-results-and-reports">
+<h3>5.3 Feature: View Results and Reports<a class="headerlink" href="#feature-view-results-and-reports" title="Link to this heading"></a></h3>
+<p>Users can view detailed results in tabular format or export them as CSV files.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Haesang ERP API documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architectureDesign.html" class="btn btn-neutral float-right" title="Architecture Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright workshop participant.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
