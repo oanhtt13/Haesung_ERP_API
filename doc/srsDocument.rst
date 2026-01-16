@@ -1,6 +1,8 @@
 .. role:: red
     :class: red
 
+
+
 .. _srsDocument:
 
 SRS Document
@@ -88,17 +90,17 @@ FR-Chatbot
    * - Description
      - Cho phép chatbot có thể hiểu được các ngôn ngữ Tiếng Anh/Tiếng Hàn tự nhiên để truy xuất thông tin. Các ngôn ngữ khác là Optional.
    * - Input
-     - Câu lệnh dạng text, được gửi đến core chatbot thông qua API
+     - Câu lệnh dạng text, được gửi đến core AI thông qua API Chatbot.
    * - Outpput
-     - Trả về câu trả lời tương ứng thông qua API
+     - Trả về câu trả lời tương ứng thông qua API Chatbot.
    * - Trigger
-     - End-user truy cập website, chọn mục ``Chatbot``
+     - End-user truy cập website khách hàng, chọn mục ``Chatbot``.
 
-       Nhập câu hỏi mong muốn và nhấn ``Enter``
+       Nhập câu hỏi mong muốn và nhấn ``Enter``.
    * - Preconditions
      - Server wesite hoạt động bình thường
 
-       Đảm bảo kết nối mạng
+       Đảm bảo kết nối mạng ổn định.
    * - Postconditionas
      - Trả lời câu hỏi của En-user đúng với mong muốn
 
@@ -154,8 +156,11 @@ FR-Chatbot
        Gợi ý các thông tin end-user có thể bổ sung để lệnh có thể chạy được.
 
 
-FR-Find Product
+FR-FR: Find Product
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+FR-FP-1: Find Product
+*******************************
 
 .. list-table:: **FR-Find Product-1**
    :widths: 15 10
@@ -181,7 +186,8 @@ FR-Find Product
      - Thông tin sản phẩm cập nhật trước đó trên hệ thống (nếu không sẽ không tìm thấy sản phẩm)
    * - Postconditions
      - Trả về tất cả các sản phẩm có thông tin khớp từ khóa
-     - Chatbot ghi nhớ sản phẩm đã được chọn (để phục vụ các bước tiếp theo)
+       
+       Chatbot ghi nhớ sản phẩm đã được chọn (để phục vụ các bước tiếp theo)
 
 .. list-table:: **Business Logic**
    :widths: 10 30 30
@@ -269,7 +275,7 @@ FR-POC: Purchase Order Creation
 FR-POC-1: Purchase Order Creation
 ****************************************
 
-.. list-table:: **FR-Email-1**
+.. list-table:: **FR-POC-1**
    :widths: 15 10
    :header-rows: 1
 
@@ -352,7 +358,7 @@ FR-RAG
 FR-RAG-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
 ***************************************************************************
 
-.. list-table:: **FR-Email-1**
+.. list-table:: **FR-RAG-1**
    :widths: 15 10
    :header-rows: 1
 
@@ -409,7 +415,7 @@ FR-RAG-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
 
 FR-RAG-2: Truy xuất "Chi tiết xuất kho" từ email
 ***********************************************************
-.. list-table:: **FR-Email-2**
+.. list-table:: **FR-RAG-2**
    :widths: 15 10
    :header-rows: 1
 
@@ -455,7 +461,7 @@ FR-RAG-2: Truy xuất "Chi tiết xuất kho" từ email
 FR-RAG-3: Truy xuất ``Đơn giá``
 ****************************************
 
-.. list-table:: **FR-Email-2**
+.. list-table:: **FR-RAG-3**
    :widths: 15 10
    :header-rows: 1
 
@@ -500,7 +506,7 @@ FR-RAG-3: Truy xuất ``Đơn giá``
 FR-RAG-4: Truy xuất :red:`Báo giá`
 ****************************************
 
-.. list-table:: **FR-Email-2**
+.. list-table:: **FR-RAG-4**
    :widths: 15 10
    :header-rows: 1
 
