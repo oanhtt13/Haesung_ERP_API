@@ -125,7 +125,7 @@ FR-Find Product
      - Trả về tất cả các sản phẩm có thông tin khớp từ khóa
 
 .. list-table:: **Business Logic**
-   :widths: 15 30 30
+   :widths: 10 30 30
    :header-rows: 1
 
    * - Step
@@ -320,7 +320,7 @@ FR-Email-3: Truy xuất ``Đơn giá``
      - Trả kết quả tìm kiếm được thông qua API
      - Thông tin trả về yêu cầu như thế nào?
 
-FR-Email-4: Truy xuất ``Báo giá``
+FR-Email-4: Truy xuất :red:`Báo giá`
 ****************************************
 
 .. list-table:: **FR-Email-2**
@@ -365,6 +365,80 @@ FR-Email-4: Truy xuất ``Báo giá``
      - Trả kết quả tìm kiếm được thông qua API
      - Thông tin trả về yêu cầu như thế nào?
 
+FR-Quality_Certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+FR-Quality_Certificate-1: Tạo phiếu chứng nhận chất lượng
+***************************************************************
+
+.. list-table:: **FR-Quality_Certificate-1**
+   :widths: 15 10
+   :header-rows: 1
+
+   * - Content
+     - Detail
+   * - Description
+     - Hỗ trợ tạo Phiếu chứng nhận chất lượng sau khi hàng đã được xuất kho
+   * - Input
+     - Khách hàng nhập message yêu cầu tạo ``Phiếu chứng nhận chất lượng``
+   * - Output
+     - Tạo thành công
+   * - Trigger
+     - End-user mở cửa sổ chatbot tại trang web
+
+       Điền câu lệnh tìm kiếm sản phẩm
+   * - Preconditions
+     - Kết nối thành công đến hệ thống ERP
+
+       Đảm bảo các thông tin cần thiết đã được update trên hệ thống ERP
+
+       Đơn hàng đã xuất kho
+   * - Postconditions
+     - Trả về các thông tin cần thiết cho ``Phiếu chứng nhận chất lượng``
+
+.. list-table:: **Exception Logic**
+   :widths: 15 30 30
+   :header-rows: 1
+
+   * - Step
+     - Desciption
+     - Business Logic Acceptance Criteria
+   * - 1. Tiếp nhận yêu cầu từ end-user
+     - Tiếp nhận yêu cầu từ phía khách hàng
+
+       Mẫu yêu cầu của khách hàng như thế nào? En-user có thể cung cấp các thông tin gì để yêu cầu tạo Phiếu?
+     - Đọc hiểu nội dung yêu cầu của khách hàng
+   * - 2. Xác nhận yêu cầu của khách hàng
+     - Tổng hợp thông tin, yêu cầu khách hàng xác nhận yêu cầu
+     - Chỉ xác định khách hàng đồng ý tạo `` Báo giá `` khi có những từ ngữ mang ý nghĩa chấp nhận.
+
+       Nếu không, cần hỏi lại khách hàng để tiếp nhận yêu cầu
+   * - 3. Yêu cầu tạo báo giá
+     - Gửi yêu cầu tạo báo giá
+     - Yêu cầu phải đầy đủ thông tin: ``Thông tin sản phẩm, số lượng``
+   * - 4. Trả về thông tin
+     - Trả về báo giá đã được tạo
+     - Nhận được link url chứa `` Báo giá ``
+
+FR-Quotation
+^^^^^^^^^^^^^^^^^^^
+
+FR-Quotation-1
+************************
+
+.. list-table:: **FR-Quality_Certificate-1**
+   :widths: 15 10
+   :header-rows: 1
+
+   * - Content
+     - Detail
+   * - Description
+     - Dựa theo thông tin trên hệ thống eCount, hỗ trợ tạo báo giá cho sản phẩm theo yêu cầu khách hàng
+   * - Input
+     - Yêu cầu của khách hàng nhập tại cửa sổ chatbot
+   * - Output
+     - File báo giá cho sản phẩm theo form có sẵn
+   * - 
 
 3.2 Non-functional Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
