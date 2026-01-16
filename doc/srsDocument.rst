@@ -68,6 +68,34 @@ Không phát triển giao diện chatbot (FE).
 3.1 Functional Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+FR-Chatbot
+^^^^^^^^^^^^
+
+.. list-table:: **FR-Find Product-1**
+   :widths: 15 10
+   :header-rows: 1
+
+   * - Content
+     - Detail
+   * - Description
+     - Cho phép chatbot có thể hiểu được các ngôn ngữ Tiếng Anh/Tiếng Hàn tự nhiên để truy xuất thông tin
+   * - Input
+     - Câu lệnh dạng text, được gửi đến core chatbot thông qua API
+   * - Outpput
+     - Trả về câu trả lời tương ứng thông qua API
+   * - Trigger
+     - Khách hàng truy cập website, chọn mục ``Chatbot``
+
+       Nhập câu hỏi mong muốn và nhấn ``Enter``
+   * - Preconditions
+     - Server wesite hoạt động bình thường
+
+       Đảm bảo kết nối mạng
+   * - Postconditionas
+     - Trả lời câu hỏi của En-user đúng với mong muốn
+
+       Có yêu cầu lưu log không?
+
 FR-Find Product
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -189,6 +217,8 @@ FR-Email-1: Chatbot truy cập và lấy thông tin từ hệ thống Naverwork
 
        Thời gian phản hồi ........????
 
+       Các dạng file sẽ xuất hiện trong email là gì?
+
 .. list-table:: **Exception Flow**
    :widths: 15 30 30
    :header-rows: 1
@@ -209,25 +239,65 @@ FR-Email-2: Truy xuất "Chi tiết xuất kho" từ email
    * - Content
      - Detail
    * - Description
-     - Đọc email trên hệ thống **Naverwork platform** (email, drive) từ đó hỗ trợ end-user truy xuất thông tin ``Chi tiết xuất kho``, ``Đơn giá ``, `` Báo giá ``.
+     - Đọc email trên hệ thống **Naverwork platform** (email, drive) từ đó hỗ trợ end-user truy xuất thông tin ``Chi tiết xuất kho``.
    * - Input
      - Email được lưu trữ trên hệ thống **Naverwork platform**.
    * - Output
-     - Tùy vào yêu cầu khách hàng, trả về các thông tin sau: ``Chi tiết xuất kho``, ``Đơn giá ``, `` Báo giá ``
+     - Tùy vào yêu cầu khách hàng, trả về các thông tin sau: ``Chi tiết xuất kho``
    * - Trigger
      - End-user mở cửa sổ chatbot tại trang web
 
        Điền câu lệnh tìm kiếm sản phẩm
    * - Preconditions
-     - Server, backend API, AI model đã hoạt động bình thường.
-
-       UI chat hoạt động
-
-       Chatbot được cấp permission để đọc email và file Drive.
-
-       Hệ thống có quyền truy cập vào Naverwork.
+     - Thông tin xuất kho tồn tại trong email
    * - Postconditions
-     - Trả về thông tin khách hàng mong muốn tại UI chatbot
+     - Trả về thông tin khách hàng mong muốn thông qua API đã dựng sẵn. Từ đó sẽ hiển thị lên màn hình chatbot
+
+       Nếu không tìm được thông tin theo yêu cầu trên hệ thống, thông báo end-user.
+
+.. list-table:: **Exception Logic**
+   :widths: 15 30 30
+   :header-rows: 1
+
+   * - Step
+     - Desciption
+     - Business Logic Acceptance Criteria
+   * - 1. Nhập lệnh yêu cầu
+     - End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.
+     - 
+   * - 2. Tìm kiếm thông tin
+     - Dựa trên yêu cầu của khách hàng, tiến hành tìm kiếm email có chứa thông tin xuất kho
+     - Thời gian truy xuất thông tin?
+   * - 3. Truy xuất thông tin xuất kho
+     - Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, ...)
+     - Trích xuất thông tin thành công, giữ nguyên tình trạng file?
+   * - 4. Trả kết quả cho user
+     - Trả kết quả tìm kiếm được thông qua API
+     - Thông tin trả về yêu cầu như thế nào?
+
+FR-Email-3: Truy xuất ``Đơn giá``
+****************************************
+
+.. list-table:: **FR-Email-2**
+   :widths: 15 10
+   :header-rows: 1
+
+   * - Content
+     - Detail
+   * - Description
+     - Cho phép truy xuất thông tin ``Đơn giá `` từ email
+   * - Input
+     - Email được lưu trữ trên hệ thống **Naverwork platform**.
+   * - Output
+     - Tùy vào yêu cầu khách hàng, trả về các thông tin sau: ``Đơn giá``
+   * - Trigger
+     - End-user mở cửa sổ chatbot tại trang web
+
+       Điền câu lệnh tìm kiếm sản phẩm
+   * - Preconditions
+     - Thông tin xuất kho tồn tại trong email
+   * - Postconditions
+     - Trả về thông tin khách hàng mong muốn thông qua API đã dựng sẵn. Từ đó sẽ hiển thị lên màn hình chatbot
      - Nếu không tìm được thông tin theo yêu cầu trên hệ thống, thông báo end-user.
 
 .. list-table:: **Exception Logic**
@@ -240,8 +310,61 @@ FR-Email-2: Truy xuất "Chi tiết xuất kho" từ email
    * - 1. Nhập lệnh yêu cầu
      - End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.
      - 
-   * - 2. Phân tích yêu cầu
-     - Dựa trên yêu cầu của khách hàng, tiến hành phân tích yêu cầu của khách hàng 
+   * - 2. Tìm kiếm thông tin
+     - Dựa trên yêu cầu của khách hàng, tiến hành tìm kiếm email có chứa thông tin ``đơn giá``
+     - Thời gian truy xuất thông tin?
+   * - 3. Truy xuất thông tin xuất kho
+     - Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, ...)
+     - Trích xuất thông tin thành công, giữ nguyên tình trạng file?
+   * - 4. Trả kết quả cho user
+     - Trả kết quả tìm kiếm được thông qua API
+     - Thông tin trả về yêu cầu như thế nào?
+
+FR-Email-4: Truy xuất ``Báo giá``
+****************************************
+
+.. list-table:: **FR-Email-2**
+   :widths: 15 10
+   :header-rows: 1
+
+   * - Content
+     - Detail
+   * - Description
+     - Cho phép truy xuất thông tin ``Báo giá `` từ email
+   * - Input
+     - Email được lưu trữ trên hệ thống **Naverwork platform**.
+   * - Output
+     - Tùy vào yêu cầu khách hàng, trả về các thông tin sau: ``Báo giá``
+   * - Trigger
+     - End-user mở cửa sổ chatbot tại trang web
+
+       Điền câu lệnh tìm kiếm sản phẩm
+   * - Preconditions
+     - Thông tin xuất kho tồn tại trong email
+   * - Postconditions
+     - Trả về thông tin khách hàng mong muốn thông qua API đã dựng sẵn. Từ đó sẽ hiển thị lên màn hình chatbot
+     - Nếu không tìm được thông tin theo yêu cầu trên hệ thống, thông báo end-user.
+
+.. list-table:: **Exception Logic**
+   :widths: 15 30 30
+   :header-rows: 1
+
+   * - Step
+     - Desciption
+     - Business Logic Acceptance Criteria
+   * - 1. Nhập lệnh yêu cầu
+     - End-user nhập message yêu cầu truy xuất thông tin tại một email chỉ định.
+     - 
+   * - 2. Tìm kiếm thông tin
+     - Dựa trên yêu cầu của khách hàng, tiến hành tìm kiếm email có chứa thông tin ``Báo giá``
+     - Thời gian truy xuất thông tin?
+   * - 3. Truy xuất thông tin xuất kho
+     - Truy xuất thông tin xuất kho (thông tin này là dạng gì? text?, file pdf?, ...)
+     - Trích xuất thông tin thành công, giữ nguyên tình trạng file?
+   * - 4. Trả kết quả cho user
+     - Trả kết quả tìm kiếm được thông qua API
+     - Thông tin trả về yêu cầu như thế nào?
+
 
 3.2 Non-functional Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
